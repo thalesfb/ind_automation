@@ -1,2 +1,2 @@
-# ind_automation
+# Industrial Automation
 Repository for learning industrial automation
