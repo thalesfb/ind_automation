@@ -38,10 +38,12 @@ graph TD;
     B -->|Bombeamento| C[Flotador];
     C -->|Tratamento| D[Tanque Terciário];
     D -->|Gravidade| E[Tanque Quaternário];
-    F[Tanque de Polímero 1] -->|Dosagem| C;
-    G[Tanque de Polímero 2] -->|Dosagem| C;
-    H[Tanque de Coagulante 1] -->|Dosagem| C;
-    I[Tanque de Coagulante 2] -->|Dosagem| C;
+    F[Tanque de Polímero 1] -->|Conexão| J[Seleção de Polímero];
+    G[Tanque de Polímero 2] -->|Conexão| J;
+    J -->|Dosagem| C;
+    H[Tanque de Coagulante 1] -->|Conexão| K[Seleção de Coagulante];
+    I[Tanque de Coagulante 2] -->|Conexão| K;
+    K -->|Dosagem| C;
 ```
 
 ## 3. Equipamentos Envolvidos
