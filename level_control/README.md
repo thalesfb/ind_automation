@@ -36,8 +36,7 @@ O diagrama a seguir ilustra o subprocesso de tratamento de água no processo de 
 graph TD;
     A[Tanque Principal] -->|Bombeamento| B[Tanque Secundário];
     B -->|Bombeamento| C[Flotador];
-    C -->|Tratamento| D[Tanque Terciário];
-    D -->|Gravidade| E[Tanque Quaternário];
+    C -->|Gravidade| E[Tanque Terciário];
     F[Tanque de Polímero 1] -->|Conexão| J[Seleção de Polímero];
     G[Tanque de Polímero 2] -->|Conexão| J;
     J -->|Dosagem| C;
@@ -51,14 +50,14 @@ graph TD;
 ### 3.1. Tanque Principal (Tanque 1)
 
 - **Função**: Capta toda a água excedente utilizada no processo de fabricação de papel.
-- **Capacidade**: 100 metros cúbicos.
+- **Capacidade**: 80 metros cúbicos.
 - **Bombeamento**: Realizado por uma bomba sapo com capacidade de 100 metros cúbicos por hora.
 - **Transporte**: A água do Tanque Principal é transportada para o Tanque Secundário.
 
 ### 3.2. Tanque Secundário (Tanque 2)
 
 - **Função**: Recebe a água do Tanque Principal e alimenta o flotador.
-- **Capacidade**: 100 metros cúbicos.
+- **Capacidade**: 36 metros cúbicos.
 - **Bombeamento**: Duas bombas de 20 cavalos, cada uma fornecendo 100 metros cúbicos de água por hora.
 - **Transporte**: A água do Tanque Secundário é bombeada para o flotador.
 
@@ -71,17 +70,12 @@ graph TD;
 
 ### 3.4. Tanque Terciário (Tanque 3)
 
-- **Função**: Armazena a água tratada pelo flotador.
-- **Capacidade**: 15 metros cúbicos.
-- **Abastecimento**: Alimentado por gravidade com capacidade limitada.
-- **Destino da Água**: A água do Tanque Terciário é direcionada para o Tanque Quaternário.
+- **Função**: Armazena a água tratada do Flotador e retroalimenta o processo, evitando a dispersão e permitindo o reaproveitamento da água.
+- **Capacidade**: 40 metros cúbicos.
+- **Bombeamento**: Realizado por uma bomba de 1 cavalo.
+- **Abastecimento**: Alimentado pela água tratada do Flotador.
 
-### 3.5. Tanque Quaternário (Tanque 4)
-
-- **Função**: Armazena 40 metros cúbicos de água tratada do Tanque Terciário e retroalimenta o processo, evitando a dispersão e permitindo o reaproveitamento da água.
-- **Abastecimento**: Também alimentado por gravidade.
-
-### 3.6. Tanque de Polímero 1 (Tanque 5)
+### 3.5. Tanque de Polímero 1 (Tanque 4)
 
 - **Função**: Armazena o polímero catiônico utilizado no tratamento de água.
 - **Capacidade**: 1,8 metros cúbicos.
@@ -90,7 +84,7 @@ graph TD;
 - **Válvula de Saída**: Válvula de controle para dosagem do polímero no flotador.
 - **Dosagem**: O polímero é dosado no flotador para auxiliar na separação das fibras de papel.
 
-### 3.7. Tanque de Polímero 2 (Tanque 6)
+### 3.6. Tanque de Polímero 2 (Tanque 5)
 
 - **Função**: Armazena o polímero catiônico utilizado no tratamento de água.
 - **Capacidade**: 1,8 metros cúbicos.
@@ -99,7 +93,7 @@ graph TD;
 - **Válvula de Saída**: Válvula de controle para dosagem do polímero no flotador
 - **Dosagem**: O polímero é dosado no flotador para auxiliar na separação das fibras de papel.
 
-### 3.8. Tanque de Coagulante (Tanque 7)
+### 3.7. Tanque de Coagulante (Tanque 6)
 
 - **Função**: Armazena o coagulante utilizado no tratamento de água.
 - **Capacidade**: 1,2 metros cúbicos.
@@ -108,7 +102,7 @@ graph TD;
 - **Válvula de Saída**: Válvula de controle para dosagem do coagulante no flotador
 - **Dosagem**: O coagulante é dosado no flotador para auxiliar na separação das fibras de papel.
 
-### 3.9. Tanque de Coagulante 2 (Tanque 8)
+### 3.8. Tanque de Coagulante 2 (Tanque 7)
 
 - **Função**: Armazena o coagulante utilizado no tratamento de água.
 - **Capacidade**: 1,2 metros cúbicos.
@@ -125,8 +119,7 @@ graph TD;
 4. É aplicado um coagulante para auxiliar na flotação das fibras de papel.
 5. É preparado e aplicado um polímero catiônico para aplicação no flotador, auxiliando na separação das fibras de papel.
 6. No flotador, produtos químicos são aplicados para separar as fibras de papel da água. O operador ajusta manualmente a vazão de água e a quantidade de produtos químicos.
-7. A água tratada flui por gravidade para o Tanque Terciário e, em seguida, para o Tanque Quaternário.
-8. O Tanque Quaternário retroalimenta o processo, reutilizando quase toda a água, reduzindo o desperdício.
+7. O Tanque Terciário retroalimenta o processo, reutilizando quase toda a água, reduzindo o desperdício.
 
 ## 5. Controle
 
@@ -135,7 +128,7 @@ O controle preciso dos níveis de água é crucial para evitar excesso ou escass
 - **Tanque 1**: O nível deve ser mantido em 50% de sua capacidade para evitar transbordamento e garantir que a água seja bombeada para o Tanque 2.
 - **Tanque 2**: Deve estar sempre em 100% de capacidade para garantir o abastecimento do flotador. Um medidor de fluxo na tubulação de saída deve ser monitorado para garantir a dosagem proporcional de produtos químicos.
 - **Flotador**: Um sensor de nível deve ser monitorado para ativar ou desligar o equipamento conforme a necessidade.
-- **Tanque 4**: O nível deve ser monitorado para garantir que a água seja direcionada para o processo de fabricação de papel. Se o nível estiver abaixo de 10%, a bomba principal deve ser acionada para bombear para o Tanque 4. Se o nível estiver acima de 90%, a bomba principal deve ser desligada para evitar transbordamento.
+- **Tanque 3**: O nível deve ser monitorado para garantir que a água seja direcionada para o processo de fabricação de papel. Se o nível estiver abaixo de 10%, a bomba principal deve ser acionada para bombear para o Tanque 3. Se o nível estiver acima de 90%, a bomba principal deve ser desligada para evitar transbordamento.
 
 ## 6. Lista de Materiais Necessários
 
@@ -148,16 +141,15 @@ O controle preciso dos níveis de água é crucial para evitar excesso ou escass
 
 2. **Tanques de Armazenamento**
 
-   - Tanque Principal (100 m³)
-   - Tanque Secundário (100 m³)
-   - Tanque Terciário (15 m³)
-   - Tanque Quaternário (40 m³)
+   - Tanque Principal (80 m³)
+   - Tanque Secundário (36 m³)
+   - Tanque Terciário (40 m³)
    - Tanques de Polímero (2 tanques de 1,8 m³)
    - Tanques de Coagulante (2 tanques de 1,2 m³)
 
 3. **Sensores e Medidores**
 
-   - Sensores de nível (Tanque 1, Flotador, Tanque 4)
+   - Sensores de nível (Tanque 1, Flotador, Tanque 3)
    - Medidores de fluxo para monitoramento da saída do Tanque 2
 
 4. **Produtos Químicos**
@@ -182,14 +174,14 @@ O controle preciso dos níveis de água é crucial para evitar excesso ou escass
 
 - Com sensores IoT e análises em tempo real, é possível ajustar automaticamente as dosagens de produtos químicos, minimizando desperdícios e melhorando a qualidade do tratamento. A integração com sistemas SCADA permitirá otimizar os parâmetros do processo de tratamento com base no feedback dos sensores, garantindo uma operação mais precisa e reativa. Além disso, a implementação de alarmes visuais e sonoros permitirá uma resposta rápida a eventos críticos, evitando falhas e garantindo a continuidade da operação.
 
-7.2. **Utilização de Circuitos de Água Fechados**
+  7.2. **Utilização de Circuitos de Água Fechados**
 
 - Implementar circuitos de água fechados para possibilitar o reaproveitamento máximo da água tratada dentro do processo produtivo. Essa abordagem minimiza o uso de água fresca e reduz o volume de efluentes, ajudando a mitigar o impacto ambiental e os custos associados ao tratamento de água.
 
-7.3. **Valvulas Pneumáticas e Automação para Dosagem**
+  7.3. **Valvulas Pneumáticas e Automação para Dosagem**
 
 - Substituir as válvulas manuais por válvulas pneumáticas para permitir maior precisão na dosagem de polímeros e coagulantes. As válvulas pneumáticas, integradas com o sistema de controle, garantirão uma resposta rápida e precisa aos comandos automáticos, melhorando o controle de dosagem e assegurando a aplicação dos produtos químicos na quantidade exata necessária.
 
-7.4. **Fechamento de Ciclos e Recuperação de Fibra**
+  7.4. **Fechamento de Ciclos e Recuperação de Fibra**
 
 - Implementar tecnologias de filtração avançada e sistemas de separação para o fechamento dos ciclos de processo e a recuperação de fibras. Isso permitirá que as fibras de papel sejam recuperadas eficientemente, reduzindo a necessidade de novas matérias-primas e aumentando a sustentabilidade do processo.
