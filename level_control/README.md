@@ -1,4 +1,4 @@
-# Subprocesso de Tratamento de Água no Processo de Fabricação de Papel
+# ETE no Processo de Fabricação de Papel
 
 ## 1. Introdução
 
@@ -138,6 +138,7 @@ O controle preciso dos níveis de água é crucial para evitar excesso ou escass
    - 2 Bombas de 20 cavalos (capacidade: 100 m³/h cada)
    - 1 Bomba de 1 cavalo para tanques de polímero
    - 1 Bomba de 1 cavalo para tanques de coagulante
+   - 1 Bomba de 10 cavalos para a captação de água do rio para eventuais faltas de água no tanque terciário
 
 2. **Tanques de Armazenamento**
 
@@ -149,7 +150,7 @@ O controle preciso dos níveis de água é crucial para evitar excesso ou escass
 
 3. **Sensores e Medidores**
 
-   - Sensores de nível (Tanque 1, Flotador, Tanque 3)
+   - Sensores de nível (Tanque 1, Tanque 2, Flotador, Tanque 3)
    - Medidores de fluxo para monitoramento da saída do Tanque 2
 
 4. **Produtos Químicos**
@@ -165,8 +166,7 @@ O controle preciso dos níveis de água é crucial para evitar excesso ou escass
 
 6. **Tubulações e Válvulas**
    - Tubulações para transporte de água entre os tanques
-   - Válvulas para controle de fluxo e dosagem de produtos químicos
-   - Válvulas pneumáticas para controle de dosagem
+   - Válvulas para controle de abastecimento e dosagem de produtos químicos
 
 ## 7. Melhorias Propostas
 
