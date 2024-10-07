@@ -1,4 +1,4 @@
-# ETE no Processo de Fabricação de Papel
+# ETE - Processo de Fabricação de Papel
 
 ## 1. Introdução
 
@@ -158,21 +158,26 @@ O controle preciso dos níveis de água é crucial para evitar excesso ou escass
    - Coagulante para flotação
    - Polímero catiônico para separação de fibras
 
-5. **Sistemas de Controle e Automação**
+5. **Tubulações e Válvulas**
 
-   - Controladore lógico programávei (CLP)
-   - Sistema SCADA para monitoramento e controle remoto
-   - Alarmes visuais e sonoros para monitoramento de níveis
-
-6. **Tubulações e Válvulas**
    - Tubulações para transporte de água entre os tanques
    - Válvulas para controle de abastecimento e dosagem de produtos químicos
+
+6. **Sistemas de Controle e Automação**
+
+   - Controladore lógico programávei (CLP) - Wago 750-8208
+   - Alarmes visuais e sonoros para monitoramento de níveis como sirenes e luzes de alerta
+
+7. **Licenças e Certificações**
+
+   - Licença para o software e!Cockpit da Wago
+   - Licença para o elipse E3 para monitoramento e controle
 
 ## 7. Melhorias Propostas
 
 7.1. **Automação e Monitoramento em Tempo Real**
 
-- Com sensores IoT e análises em tempo real, é possível ajustar automaticamente as dosagens de produtos químicos, minimizando desperdícios e melhorando a qualidade do tratamento. A integração com sistemas SCADA permitirá otimizar os parâmetros do processo de tratamento com base no feedback dos sensores, garantindo uma operação mais precisa e reativa. Além disso, a implementação de alarmes visuais e sonoros permitirá uma resposta rápida a eventos críticos, evitando falhas e garantindo a continuidade da operação.
+- Com sensores IoT e análises em tempo real, é possível ajustar automaticamente as dosagens de produtos químicos, minimizando desperdícios e melhorando a qualidade do tratamento. A integração com sistemas permitirá otimizar os parâmetros do processo de tratamento com base no feedback dos sensores, garantindo uma operação mais precisa e reativa. Além disso, a implementação de alarmes visuais e sonoros permitirá uma resposta rápida a eventos críticos, evitando falhas e garantindo a continuidade da operação.
 
   7.2. **Utilização de Circuitos de Água Fechados**
 
