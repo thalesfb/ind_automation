@@ -179,14 +179,18 @@ O controle preciso dos níveis de água é crucial para evitar excesso ou escass
 
 - Com sensores IoT e análises em tempo real, é possível ajustar automaticamente as dosagens de produtos químicos, minimizando desperdícios e melhorando a qualidade do tratamento. A integração com sistemas permitirá otimizar os parâmetros do processo de tratamento com base no feedback dos sensores, garantindo uma operação mais precisa e reativa. Além disso, a implementação de alarmes visuais e sonoros permitirá uma resposta rápida a eventos críticos, evitando falhas e garantindo a continuidade da operação.
 
-  7.2. **Utilização de Circuitos de Água Fechados**
+7.2. **Utilização de Circuitos de Água Fechados**
 
 - Implementar circuitos de água fechados para possibilitar o reaproveitamento máximo da água tratada dentro do processo produtivo. Essa abordagem minimiza o uso de água fresca e reduz o volume de efluentes, ajudando a mitigar o impacto ambiental e os custos associados ao tratamento de água.
 
-  7.3. **Valvulas Pneumáticas e Automação para Dosagem**
+7.3. **Valvulas Pneumáticas e Automação para Dosagem**
 
 - Substituir as válvulas manuais por válvulas pneumáticas para permitir maior precisão na dosagem de polímeros e coagulantes. As válvulas pneumáticas, integradas com o sistema de controle, garantirão uma resposta rápida e precisa aos comandos automáticos, melhorando o controle de dosagem e assegurando a aplicação dos produtos químicos na quantidade exata necessária.
 
-  7.4. **Fechamento de Ciclos e Recuperação de Fibra**
+7.4. **Fechamento de Ciclos e Recuperação de Fibra**
 
 - Implementar tecnologias de filtração avançada e sistemas de separação para o fechamento dos ciclos de processo e a recuperação de fibras. Isso permitirá que as fibras de papel sejam recuperadas eficientemente, reduzindo a necessidade de novas matérias-primas e aumentando a sustentabilidade do processo.
+
+## 8. Referências
+
+- [Pulp and Paper Technology - Latest Innovations Driving Water Treatment in Paper Mills](https://www.pulpandpaper-technology.com/articles/latest-innovations-driving-water-treatment-in-paper-mills)
