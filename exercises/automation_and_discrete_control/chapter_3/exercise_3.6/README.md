@@ -1,0 +1,2 @@
+### 3.6)
+Em uma máquina de solda, há dois elementos controlados por um PLC: um contactor (A) para fechamento do arco e um relé (E) para avanço do motor do eletrodo. Quando o operador aciona o gatilho (G), a máquina deve entrar em funcionamento, atuando primeiramente o motor e 0,5 segundo após atuar o eletrodo. No momento em que o operador solta o gatilho, uma operação reversa deve ocorrer, ou seja, primeiramente desliga-se o eletrodo e após 0,5 segundo desliga-se o motor. Com base nestas informações elabore um programa PLC para realizar tal controle.
