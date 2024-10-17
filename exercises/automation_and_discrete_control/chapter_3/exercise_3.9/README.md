@@ -1,0 +1,2 @@
+### 3.9)
+Utilizando-se dos recursos de contagem em PLC, elabore um programa capaz de acionar uma lâmpada sinalizadora sempre que o número de pulsos recebidos em sua entrada for múltiplo de 5 (cinco). Assim, no recebimento do quinto pulso a lâmpada acende, desligando-se no sexto; novamente acende no décimo e desliga no décimo primeiro e assim sucessivamente.
