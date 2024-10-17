@@ -1,0 +1,2 @@
+### 3.8)
+Elaborar um programa PLC capaz de interromper automaticamente o funcionamento de uma esteira transportadora de peças. A parada realiza-se sempre que um sensor óptico não detectar a passagem de uma nova peça num intervalo maior do que 5 segundos. O religamento da esteira se dá pelo comando do operador em uma botoeira. Identifique qual esquema de temporização foi utilizado na solução.
