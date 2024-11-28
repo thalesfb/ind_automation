@@ -3,7 +3,7 @@
   <ProjectVersion>2.9.0.0</ProjectVersion>
   <ManagementLevel>FunctLevelMan20_0</ManagementLevel>
   <Name>level_control</Name>
-  <FullName>C:\Users\User\OneDrive\Documentos\Projetos_CLP\Conteúdo da Aula\Projeto Final\level_control.smbp</FullName>
+  <FullName>G:\Meu Drive\Facul\Automação Industrial\ind_automation\level_control\plc\level_control.smbp</FullName>
   <CurrentCultureName>pt-BR</CurrentCultureName>
   <SoftwareConfiguration>
     <Pous>
@@ -1105,8 +1105,8 @@
               <LadderEntity>
                 <ElementType>Coil</ElementType>
                 <Descriptor>%M12</Descriptor>
-                <Comment />
-                <Symbol />
+                <Comment>Sensor de Leitura de nível em 80%</Comment>
+                <Symbol>INPUT_SENS_SH_TQ_TERC</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -1308,6 +1308,12 @@
         <Index>11</Index>
         <Symbol>INPUT_SENS_SL_TQ_TERC</Symbol>
         <Comment>Sensor de Leitura de nível em 20%</Comment>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M12</Address>
+        <Index>12</Index>
+        <Symbol>INPUT_SENS_SH_TQ_TERC</Symbol>
+        <Comment>Sensor de Leitura de nível em 80%</Comment>
       </MemoryBit>
     </MemoryBits>
     <SystemBits>
