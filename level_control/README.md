@@ -34,15 +34,41 @@ O diagrama a seguir ilustra o subprocesso de tratamento de água no processo de 
 
 ```mermaid
 graph TD;
-    A[Tanque Principal] -->|Bombeamento| B[Tanque Secundário];
-    B -->|Bombeamento| C[Flotador];
-    C -->|Gravidade| E[Tanque Terciário];
-    F[Tanque de Polímero 1] -->|Conexão| J[Seleção de Polímero];
-    G[Tanque de Polímero 2] -->|Conexão| J;
-    J -->|Dosagem| C;
-    H[Tanque de Coagulante 1] -->|Conexão| K[Seleção de Coagulante];
-    I[Tanque de Coagulante 2] -->|Conexão| K;
-    K -->|Dosagem| C;
+    TK-101[Tanque Principal] --> P-101[Bomba];
+    P-101 --> TK-102[Tanque Secundário];
+    TK-102 --> P-102-A[Bomba];
+    TK-102 --> P-102-B[Bomba];
+    P-102-A -->|Fluxo calculado| F[Flotador];
+    P-102-B -->|Fluxo calculado| F[Flotador];
+
+    P-103 -->|Dosagem Automática| F;
+    P-104 -->|Dosagem Automática| F;
+
+    subgraph Água
+      F -->|Água| TK-105[Tanque Água];
+      P-105[Bomba] -->|Água| TK-105;
+    end
+    subgraph Fibras
+      F -->|Fibras| TK-106[Tanque Fibras];
+      TK-106 -->|Fibras| P-106[Bomba];
+    end
+
+    subgraph Químicos
+      TK-201[Tanque d'água] --> TK-104-A[Tanque de Polímero A];
+      TK-201 --> TK-104-B[Tanque de Polímero B];
+      TK-201 --> TK-103-A[Tanque de Coagulante A];
+      TK-201 --> TK-103-B[Tanque de Coagulante B];
+      subgraph Polímeros
+         TK-104-A --> S[Seleção];
+         TK-104-B --> S[Seleção];
+         S --> P-104[Dosagem];
+      end
+      subgraph Coagulantes
+         TK-103-A --> S2[Seleção];
+         TK-103-B --> S2[Seleção];
+         S2 --> P-103[Dosagem];
+      end
+    end
 ```
 
 ## 3. Equipamentos Envolvidos
@@ -173,24 +199,82 @@ O controle preciso dos níveis de água é crucial para evitar excesso ou escass
    - Licença para o software e!Cockpit da Wago
    - Licença para o elipse E3 para monitoramento e controle
 
-## 7. Melhorias Propostas
+## 7. Mapeamento de Entradas, Saídas e Memórias
 
-7.1. **Automação e Monitoramento em Tempo Real**
+| **Tipo**              | **Endereço** | **Descrição**                                                     | **Símbolo**                |
+| --------------------- | ------------ | ----------------------------------------------------------------- | -------------------------- |
+| **Entradas Digitais** | `%I0.0`      | Sensor de nível muito alto no tanque TK-101                       | `INPUT_LTHH_TK101`         |
+|                       | `%I0.1`      | Sensor de nível alto no tanque TK-101                             | `INPUT_LTH_TK101`          |
+|                       | `%I0.2`      | Sensor de nível muito baixo no tanque TK-101                      | `INPUT_LTLL_TK101`         |
+|                       | `%I0.2`      | Sensor de nível muito alto no tanque TK-103/A                     | `INPUT_LTHH_TK103_A`       |
+|                       | `%I0.3`      | Sensor de nível muito baixo no tanque TK-103/A                    | `INPUT_LTLL_TK103_A`       |
+|                       | `%I0.4`      | Sensor de nível muito alto no tanque TK-103/B                     | `INPUT_LTHH_TK103_B`       |
+|                       | `%I0.5`      | Sensor de nível muito baixo no tanque TK-103/B                    | `INPUT_LTLL_TK103_B`       |
+|                       | `%I0.6`      | Sensor de nível muito alto no tanque TK-104/A                     | `INPUT_LTHH_TK104_A`       |
+|                       | `%I0.7`      | Sensor de nível muito baixo no tanque TK-104/A                    | `INPUT_LTLL_TK104_A`       |
+|                       | `%I1.0`      | Sensor de nível muito alto no tanque TK-104/B                     | `INPUT_LTHH_TK104_B`       |
+|                       | `%I1.1`      | Sensor de nível muito baixo no tanque TK-104/B                    | `INPUT_LTLL_TK104_B`       |
+|                       | `%I1.2`      | Sensor de nível muito alto no tanque TK-105                       | `INPUT_LTHH_TK105`         |
+|                       | `%I1.3`      | Sensor de nível muito baixo no tanque TK-105                      | `INPUT_LTLL_TK105`         |
+|                       | `%I1.4`      | Botão Start do sistema                                            | `INPUT_START_BUTTON`       |
+|                       | `%I1.5`      | Botão Stop do sistema                                             | `INPUT_STOP_BUTTON`        |
+|                       | `%I1.6`      | Falha na bomba P-101A                                             | `INPUT_FAULT_P101A`        |
+|                       | `%I1.7`      | Falha na bomba P-101B                                             | `INPUT_FAULT_P101B`        |
+| **Saídas Digitais**   | `%Q0.0`      | Acionamento da bomba P-101 para abastecimento do TK-102           | `OUTPUT_RUN_P101`          |
+|                       | `%Q0.2`      | Acionamento da bomba P-102/A                                      | `OUTPUT_RUN_P102A`         |
+|                       | `%Q0.3`      | Acionamento da bomba P-102/B                                      | `OUTPUT_RUN_P102B`         |
+|                       | `%Q0.4`      | Acionamento da bomba P-105 de água fresca                         | `OUTPUT_RUN_P103`          |
+|                       | `%Q0.5`      | Acionamento da bomba P-103 da dosagem do coagulante               | `OUTPUT_RUN_P104`          |
+|                       | `%Q0.6`      | Acionamento da bomba P-104 da dosagem do polímero                 | `OUTPUT_RUN_P105`          |
+|                       | `%Q0.7`      | Acionamento do flotador                                           | `OUTPUT_RUN_FLOAT`         |
+|                       | `%Q0.8`      | Alarme sonoro                                                     | `OUTPUT_ALARM`             |
+|                       | `%Q0.9`      | Agitador do TK-103/A                                              | `OUTPUT_RUN_AGT_TK103_A`   |
+|                       | `%Q0.10`     | Agitador do TK-103/B                                              | `OUTPUT_RUN_AGT_TK103_B`   |
+|                       | `%Q0.11`     | Agitador do TK-104/A                                              | `OUTPUT_RUN_AGT_TK104_A`   |
+|                       | `%Q0.12`     | Agitador do TK-104/B                                              | `OUTPUT_RUN_AGT_TK104_B`   |
+|                       | `%Q0.13`     | Abertura da válvula pneumática para entrada de água do TK-103/A   | `OUTPUT_OPEN_VLV_TK103_A`  |
+|                       | `%Q0.14`     | Abertura da válvula pneumática para entrada de água do TK-103/B   | `OUTPUT_OPEN_VLV_TK103_B`  |
+|                       | `%Q0.15`     | Abertura da válvula pneumática para entrada de água do TK-104/A   | `OUTPUT_OPEN_VLV_TK104_A`  |
+|                       | `%Q1.0`      | Abertura da válvula pneumática para entrada de água do TK-104/B   | `OUTPUT_OPEN_VLV_TK104_B`  |
+|                       | `%Q1.1`      | Fechamento da válvula pneumática para entrada de água do TK-103/A | `OUTPUT_CLOSE_VLV_TK103_A` |
+|                       | `%Q1.2`      | Fechamento da válvula pneumática para entrada de água do TK-103/B | `OUTPUT_CLOSE_VLV_TK103_B` |
+|                       | `%Q1.3`      | Fechamento da válvula pneumática para entrada de água do TK-104/A | `OUTPUT_CLOSE_VLV_TK104_A` |
+|                       | `%Q1.4`      | Fechamento da válvula pneumática para entrada de água do TK-104/B | `OUTPUT_CLOSE_VLV_TK104_B` |
+| **Memórias Internas** | `%M0`        | Sensor de leitura de nível em 80% do TK-101                       | `INPUT_SENS_S1_TK-101`     |
+|                       | `%M1`        | Sensor de leitura de nível em 50% do TK-101                       | `INPUT_SENS_S2_TK-101`     |
+|                       | `%M2`        | Sensor de leitura de nível em 20% do TK-101                       | `INPUT_SENS_S3_TK-101`     |
+|                       | `%M3`        | Sensor de leitura de nível alto do tanque TK-103/A                | `INPUT_SENS_SH_TK-103_A`   |
+|                       | `%M4`        | Sensor de leitura de nível baixo do tanque TK-103/A               | `INPUT_SENS_SL_TK-103_A`   |
+|                       | `%M5`        | Sensor de leitura de nível alto do tanque TK-103/B                | `INPUT_SENS_SH_TK-103_B`   |
+|                       | `%M6`        | Sensor de leitura de nível baixo do tanque TK-103/B               | `INPUT_SENS_SL_TK-103_B`   |
+|                       | `%M7`        | Sensor de leitura de nível alto do tanque TK-104/A                | `INPUT_SENS_SH_TK-104_A`   |
+|                       | `%M8`        | Sensor de leitura de nível baixo do tanque TK-104/A               | `INPUT_SENS_SL_TK-104_A`   |
+|                       | `%M9`        | Sensor de leitura de nível alto do tanque TK-104/B                | `INPUT_SENS_SH_TK-104_B`   |
+|                       | `%M10`       | Sensor de leitura de nível baixo do tanque TK-104/B               | `INPUT_SENS_SL_TK-104_B`   |
+|                       | `%M11`       | Sensor de leitura de nível alto do tanque TK-106                  | `INPUT_SENS_SH_TK-106`     |
+|                       | `%M12`       | Sensor de leitura de nível baixo do tanque TK-106                 | `INPUT_SENS_SL_TK-106`     |
+|                       | `%M13`       | Bomba P-103 em funcionamento                                      | `OUTPUT_RUN_P103`          |
+|                       | `%M14`       | Estado RUN do sistema                                             | `MEM_RUN_STATE`            |
+|                       | `%M15`       | Alternância de bombas P-102/A e P-102/B                           | `MEM_ALT_P102`             |
+
+## 8. Melhorias Propostas
+
+8.1. **Automação e Monitoramento em Tempo Real**
 
 - Com sensores IoT e análises em tempo real, é possível ajustar automaticamente as dosagens de produtos químicos, minimizando desperdícios e melhorando a qualidade do tratamento. A integração com sistemas permitirá otimizar os parâmetros do processo de tratamento com base no feedback dos sensores, garantindo uma operação mais precisa e reativa. Além disso, a implementação de alarmes visuais e sonoros permitirá uma resposta rápida a eventos críticos, evitando falhas e garantindo a continuidade da operação.
 
-7.2. **Utilização de Circuitos de Água Fechados**
+  8.2. **Utilização de Circuitos de Água Fechados**
 
 - Implementar circuitos de água fechados para possibilitar o reaproveitamento máximo da água tratada dentro do processo produtivo. Essa abordagem minimiza o uso de água fresca e reduz o volume de efluentes, ajudando a mitigar o impacto ambiental e os custos associados ao tratamento de água.
 
-7.3. **Valvulas Pneumáticas e Automação para Dosagem**
+  8.3. **Valvulas Pneumáticas e Automação para Dosagem**
 
 - Substituir as válvulas manuais por válvulas pneumáticas para permitir maior precisão na dosagem de polímeros e coagulantes. As válvulas pneumáticas, integradas com o sistema de controle, garantirão uma resposta rápida e precisa aos comandos automáticos, melhorando o controle de dosagem e assegurando a aplicação dos produtos químicos na quantidade exata necessária.
 
-7.4. **Fechamento de Ciclos e Recuperação de Fibra**
+  8.4. **Fechamento de Ciclos e Recuperação de Fibra**
 
 - Implementar tecnologias de filtração avançada e sistemas de separação para o fechamento dos ciclos de processo e a recuperação de fibras. Isso permitirá que as fibras de papel sejam recuperadas eficientemente, reduzindo a necessidade de novas matérias-primas e aumentando a sustentabilidade do processo.
 
-## 8. Referências
+## 9. Referências
 
 - [Pulp and Paper Technology - Latest Innovations Driving Water Treatment in Paper Mills](https://www.pulpandpaper-technology.com/articles/latest-innovations-driving-water-treatment-in-paper-mills)
