@@ -73,53 +73,55 @@ graph TD;
 
 ## 3. Equipamentos Envolvidos
 
-### 3.1. Tanque Principal (Tanque 1)
+### 3.1. Tanque Principal (TK-101)
 
-- **Função**: Capta toda a água excedente utilizada no processo de fabricação de papel.
+- **Função**: Recebe a água excedente do processo de fabricação.
 - **Capacidade**: 80 metros cúbicos.
-- **Bombeamento**: Realizado por uma bomba sapo com capacidade de 100 metros cúbicos por hora.
-- **Transporte**: A água do Tanque Principal é transportada para o Tanque Secundário.
+- **Conexão**: Alimenta o Tanque Secundário via a bomba P-101.
 
-### 3.2. Tanque Secundário (Tanque 2)
+### 3.2. Tanque Secundário (TK-102)
 
-- **Função**: Recebe a água do Tanque Principal e alimenta o flotador.
+- **Função**: Alimenta o flotador com água tratada.
 - **Capacidade**: 36 metros cúbicos.
-- **Bombeamento**: Duas bombas de 20 cavalos, cada uma fornecendo 100 metros cúbicos de água por hora.
-- **Transporte**: A água do Tanque Secundário é bombeada para o flotador.
+- **Conexão**: Conectado às bombas P-102-A e P-102-B.
 
-### 3.3. Flotador
+### 3.3. Flotador (F)
 
-- **Função**: Realiza a flotação das fibras de papel da água e arrasta as fibras para recuperação e a água para reaproveitamento.
+- **Função**: Realiza a separação de fibras da água.
 - **Capacidade**: 100 metros cúbicos por hora.
-- **Produtos Químicos**: São aplicados para auxiliar na separação das fibras de papel.
-- **Destino da Água**: Após o tratamento, a água segue para o Tanque Terciário.
+- **Conexão**: 
+   - Recebe água do Tanque Secundário.
+   - Dosagem de coagulante e polímero para auxílio separação de fibras.
+   - Alimenta os tanques de água e fibras.
 
-### 3.4. Tanque Terciário (Tanque 3)
+### 3.4. Tanque de Água (TK-105)
 
-- **Função**: Armazena a água tratada do Flotador e retroalimenta o processo, evitando a dispersão e permitindo o reaproveitamento da água.
+- **Função**: Armazena a água tratada pelo flotador para reutilização.
 - **Capacidade**: 40 metros cúbicos.
-- **Bombeamento**: Realizado por uma bomba de 1 cavalo.
-- **Abastecimento**: Alimentado pela água tratada do Flotador.
 
-### 3.5. Tanque de Polímero 1 (Tanque 4)
+### 3.5. Tanque de Fibras (TK-106)
+- **Função**: Armazena fibras recuperadas pelo flotador.
+- **Conexão**: Bombeia as fibras para processos externos via P-106.
 
-- **Função**: Armazena o polímero catiônico utilizado no tratamento de água.
+### 3.6. Tanque de Polímero 1 (TK-104/A)
+
+- **Função**: Armazena o polímero utilizado no tratamento de água.
 - **Capacidade**: 1,8 metros cúbicos.
 - **Bombeamento**: Realizado por uma bomba de 1 cavalo.
 - **Abastecimento**: Registro de água para diluição do polímero catiônico antes da aplicação no flotador.
 - **Válvula de Saída**: Válvula de controle para dosagem do polímero no flotador.
 - **Dosagem**: O polímero é dosado no flotador para auxiliar na separação das fibras de papel.
 
-### 3.6. Tanque de Polímero 2 (Tanque 5)
+### 3.7. Tanque de Polímero 2 (TK-104/B)
 
-- **Função**: Armazena o polímero catiônico utilizado no tratamento de água.
+- **Função**: Armazena o polímero utilizado no tratamento de água.
 - **Capacidade**: 1,8 metros cúbicos.
 - **Bombeamento**: Realizado por uma bomba de 1 cavalo.
 - **Abastecimento**: Registro de água para diluição do polímero catiônico antes da aplicação no flotador.
 - **Válvula de Saída**: Válvula de controle para dosagem do polímero no flotador
 - **Dosagem**: O polímero é dosado no flotador para auxiliar na separação das fibras de papel.
 
-### 3.7. Tanque de Coagulante (Tanque 6)
+### 3.8. Tanque de Coagulante (TK-103/A)
 
 - **Função**: Armazena o coagulante utilizado no tratamento de água.
 - **Capacidade**: 1,2 metros cúbicos.
@@ -128,7 +130,7 @@ graph TD;
 - **Válvula de Saída**: Válvula de controle para dosagem do coagulante no flotador
 - **Dosagem**: O coagulante é dosado no flotador para auxiliar na separação das fibras de papel.
 
-### 3.8. Tanque de Coagulante 2 (Tanque 7)
+### 3.9. Tanque de Coagulante 2 (TK-103/B)
 
 - **Função**: Armazena o coagulante utilizado no tratamento de água.
 - **Capacidade**: 1,2 metros cúbicos.
@@ -141,11 +143,14 @@ graph TD;
 
 1. A água excedente utilizada no processo principal de fabricação de papel é direcionada ao Tanque Principal.
 2. A bomba sapo do Tanque Principal transporta a água para o Tanque Secundário.
-3. No Tanque Secundário, uma das bombas abastece o flotador.
-4. É aplicado um coagulante para auxiliar na flotação das fibras de papel.
-5. É preparado e aplicado um polímero catiônico para aplicação no flotador, auxiliando na separação das fibras de papel.
-6. No flotador, produtos químicos são aplicados para separar as fibras de papel da água. O operador ajusta manualmente a vazão de água e a quantidade de produtos químicos.
-7. O Tanque Terciário retroalimenta o processo, reutilizando quase toda a água, reduzindo o desperdício.
+3. No Tanque Secundário, uma das duas bombas abastece o flotador.
+4. É preparado e/ou aplicado um coagulante para auxiliar na flotação das fibras de papel.
+5. É preparado e/ou aplicado um polímero para aplicação no flotador, auxiliando na separação das fibras de papel.
+6. No flotador, produtos químicos são aplicados para separar as fibras de papel da água.
+7. São ajustadas as dosagens de coagulante e polímero conforme a necessidade.
+8. É ajustado a vazão de água para o flotador conforme a demanda.
+9. O Tanque Terciário retroalimenta o processo, reutilizando quase toda a água, reduzindo o desperdício.
+10. As fibras recuperadas são armazenadas no Tanque de Fibras para reutilização no processo produtivo.
 
 ## 5. Controle
 
@@ -154,30 +159,35 @@ O controle preciso dos níveis de água é crucial para evitar excesso ou escass
 - **Tanque 1**: O nível deve ser mantido em 50% de sua capacidade para evitar transbordamento e garantir que a água seja bombeada para o Tanque 2.
 - **Tanque 2**: Deve estar sempre em 100% de capacidade para garantir o abastecimento do flotador. Um medidor de fluxo na tubulação de saída deve ser monitorado para garantir a dosagem proporcional de produtos químicos.
 - **Flotador**: Um sensor de nível deve ser monitorado para ativar ou desligar o equipamento conforme a necessidade.
-- **Tanque 3**: O nível deve ser monitorado para garantir que a água seja direcionada para o processo de fabricação de papel. Se o nível estiver abaixo de 10%, a bomba principal deve ser acionada para bombear para o Tanque 3. Se o nível estiver acima de 90%, a bomba principal deve ser desligada para evitar transbordamento.
+- **Tanque 5**: O nível deve ser monitorado para garantir que a água seja direcionada para o processo de fabricação de papel. Se o nível estiver abaixo de 20%, a bomba d'água deve ser acionada para bombear para o Tanque 5. Se o nível estiver acima de 80%, a bomba principal deve ser desligada para evitar transbordamento.
 
 ## 6. Lista de Materiais Necessários
 
-1. **Bombas de Água**
+1. **Bombas**
 
    - 1 Bomba sapo (capacidade: 100 m³/h)
    - 2 Bombas de 20 cavalos (capacidade: 100 m³/h cada)
    - 1 Bomba de 1 cavalo para tanques de polímero
    - 1 Bomba de 1 cavalo para tanques de coagulante
    - 1 Bomba de 10 cavalos para a captação de água do rio para eventuais faltas de água no tanque terciário
+   - 1 Bomba de 1 cavalo para bombear água do tanque de fibras para o processo produtivo
 
 2. **Tanques de Armazenamento**
 
    - Tanque Principal (80 m³)
    - Tanque Secundário (36 m³)
-   - Tanque Terciário (40 m³)
    - Tanques de Polímero (2 tanques de 1,8 m³)
    - Tanques de Coagulante (2 tanques de 1,2 m³)
+   - Tanque de Água (40 m³)
+   - Tanque de Fibras (10 m³)
 
 3. **Sensores e Medidores**
 
-   - Sensores de nível (Tanque 1, Tanque 2, Flotador, Tanque 3)
-   - Medidores de fluxo para monitoramento da saída do Tanque 2
+   - Sensores de nível
+      - Nível muito alto, nível alto e nível muito baixo para oo tanque 1
+      - Nível de funcionamento do flotador
+      - Nível muito alto e nível muito baixo para o tanque 5
+   - Medidor de fluxo para monitoramento da saída do Tanque 2
 
 4. **Produtos Químicos**
 
@@ -187,11 +197,11 @@ O controle preciso dos níveis de água é crucial para evitar excesso ou escass
 5. **Tubulações e Válvulas**
 
    - Tubulações para transporte de água entre os tanques
-   - Válvulas para controle de abastecimento e dosagem de produtos químicos
+   - Válvulas para controle de abastecimento de água e dosagem de produtos químicos
 
 6. **Sistemas de Controle e Automação**
 
-   - Controladore lógico programávei (CLP) - Wago 750-8208
+   - Controlador lógico programável (CLP) - Wago 750-8208
    - Alarmes visuais e sonoros para monitoramento de níveis como sirenes e luzes de alerta
 
 7. **Licenças e Certificações**
