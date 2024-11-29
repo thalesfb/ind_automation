@@ -38,20 +38,24 @@ graph TD;
     P-101 --> TK-102[Tanque Secundário];
     TK-102 --> P-102-A[Bomba];
     TK-102 --> P-102-B[Bomba];
-    P-102-A -->|Fluxo calculado| F[Flotador];
-    P-102-B -->|Fluxo calculado| F[Flotador];
+    P-102-A -->S3[Seleção];
+    P-102-B -->S3[Seleção];
+
+    S3 -->|Medição e ajuste de fluxo| F[Flotador];
 
     P-103 -->|Dosagem Automática| F;
     P-104 -->|Dosagem Automática| F;
 
     subgraph Água
-      F -->|Água| TK-105[Tanque Água];
+      TK-105[Tanque Água];
       P-105[Bomba] -->|Água| TK-105;
     end
+    F -->|Água| TK-105;
     subgraph Fibras
-      F -->|Fibras| TK-106[Tanque Fibras];
+      TK-106[Tanque Fibras];
       TK-106 -->|Fibras| P-106[Bomba];
     end
+    F -->|Fibras| TK-106[Tanque Fibras];
 
     subgraph Químicos
       TK-201[Tanque d'água] --> TK-104-A[Tanque de Polímero A];
@@ -89,10 +93,10 @@ graph TD;
 
 - **Função**: Realiza a separação de fibras da água.
 - **Capacidade**: 100 metros cúbicos por hora.
-- **Conexão**: 
-   - Recebe água do Tanque Secundário.
-   - Dosagem de coagulante e polímero para auxílio separação de fibras.
-   - Alimenta os tanques de água e fibras.
+- **Conexão**:
+  - Recebe água do Tanque Secundário.
+  - Dosagem de coagulante e polímero para auxílio separação de fibras.
+  - Alimenta os tanques de água e fibras.
 
 ### 3.4. Tanque de Água (TK-105)
 
@@ -100,6 +104,7 @@ graph TD;
 - **Capacidade**: 40 metros cúbicos.
 
 ### 3.5. Tanque de Fibras (TK-106)
+
 - **Função**: Armazena fibras recuperadas pelo flotador.
 - **Conexão**: Bombeia as fibras para processos externos via P-106.
 
@@ -184,9 +189,9 @@ O controle preciso dos níveis de água é crucial para evitar excesso ou escass
 3. **Sensores e Medidores**
 
    - Sensores de nível
-      - Nível muito alto, nível alto e nível muito baixo para oo tanque 1
-      - Nível de funcionamento do flotador
-      - Nível muito alto e nível muito baixo para o tanque 5
+     - Nível muito alto, nível alto e nível muito baixo para oo tanque 1
+     - Nível de funcionamento do flotador
+     - Nível muito alto e nível muito baixo para o tanque 5
    - Medidor de fluxo para monitoramento da saída do Tanque 2
 
 4. **Produtos Químicos**
