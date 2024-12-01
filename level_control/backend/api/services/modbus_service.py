@@ -1,5 +1,6 @@
 # api/services/modbus_service.py
 
+import asyncio
 import os
 import time
 import logging
@@ -43,24 +44,22 @@ class ModbusService:
         )
         return logging.getLogger(self.__class__.__name__)
 
-    def connect(self):
+    async def connect(self):
         """
         Establish a connection to the PLC.
 
         :raises ConnectionError: If the connection fails.
         """
         try:
-            self.client = ModbusTcpClient(
+            self.client = AsyncModbusTcpClient(
                 self.host, port=self.port, timeout=self.timeout)
-            if not self.client.connect():
-                raise ConnectionError(
-                    f"Failed to connect to PLC at {self.host}:{self.port}.")
+            await self.client.connect()
             self.logger.info(f"Connected to PLC at {self.host}:{self.port}.")
         except Exception as e:
             self.logger.error(f"Error while connecting to PLC: {e}")
             raise
 
-    def disconnect(self):
+    async def disconnect(self):
         """
         Close the connection to the PLC.
         """
@@ -72,7 +71,7 @@ class ModbusService:
             self.logger.error(f"Error while disconnecting from PLC: {e}")
             raise
 
-    def _retry_operation(self, operation, *args, **kwargs):
+    async def _retry_operation(self, operation, *args, **kwargs):
         """
         Retry a Modbus operation in case of transient errors.
 
@@ -84,17 +83,17 @@ class ModbusService:
         """
         for attempt in range(self.retries):
             try:
-                return operation(*args, **kwargs)
+                return await operation(*args, **kwargs)
             except Exception as e:
                 if attempt < self.retries - 1:
                     self.logger.warning(
                         f"Operation failed, retrying in {self.delay} seconds... (Attempt {attempt + 1})")
-                    time.sleep(self.delay)
+                    await asyncio.sleep(self.delay)
                 else:
                     self.logger.error(f"All retries failed: {e}")
                     raise
 
-    def read_holding_registers(self, address: int, count: int):
+    async def read_holding_registers(self, address: int, count: int):
         """
         Read holding registers from the PLC.
 
@@ -103,9 +102,9 @@ class ModbusService:
         :return: List of register values.
         :raises Exception: If the read operation fails.
         """
-        return self._retry_operation(self._read_holding_registers, address, count)
+        return await self._retry_operation(self._read_holding_registers, address, count)
 
-    def _read_holding_registers(self, address: int, count: int):
+    async def _read_holding_registers(self, address: int, count: int):
         """
         Internal method to read holding registers.
 
@@ -115,7 +114,7 @@ class ModbusService:
         :raises Exception: If the read operation fails.
         """
         try:
-            response = self.client.read_holding_registers(
+            response = await self.client.read_holding_registers(
                 address=address, count=count, unit=self.slave_id)
             if response.isError():
                 raise Exception(
@@ -127,7 +126,7 @@ class ModbusService:
             self.logger.error(f"Error reading holding registers: {e}")
             raise
 
-    def write_register(self, address: int, value: int):
+    async def write_register(self, address: int, value: int):
         """
         Write a value to a single register.
 
@@ -137,7 +136,7 @@ class ModbusService:
         """
         self._retry_operation(self._write_register, address, value)
 
-    def _write_register(self, address: int, value: int):
+    async def _write_register(self, address: int, value: int):
         """
         Internal method to write a value to a single register.
 
@@ -157,25 +156,10 @@ class ModbusService:
             self.logger.error(f"Error writing to register: {e}")
             raise
 
-    def is_connected(self):
+    async def is_connected(self):
         """
         Check if the client is connected to the PLC.
 
         :return: True if connected, False otherwise.
         """
         return self.client.is_socket_open() if self.client else False
-
-
-# # Load environment variables (e.g., from a .env file)
-# load_dotenv()
-
-# # Example configuration from environment variables
-# HOST = os.getenv("MODBUS_HOST", "192.168.0.10")
-# PORT = int(os.getenv("MODBUS_PORT", 502))
-# SLAVE_ID = int(os.getenv("MODBUS_SLAVE_ID", 1))
-# TIMEOUT = int(os.getenv("MODBUS_TIMEOUT", 5))
-# RETRIES = int(os.getenv("MODBUS_RETRIES", 3))
-# DELAY = int(os.getenv("MODBUS_RETRY_DELAY", 2))
-
-# # Instantiate the ModbusService
-# modbus_service = ModbusService(host=HOST, port=PORT, slave_id=SLAVE_ID, timeout=TIMEOUT, retries=RETRIES, delay=DELAY)
